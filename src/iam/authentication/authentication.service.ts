@@ -25,7 +25,7 @@ export class AuthenticationService {
       user.password = await this.hashingService.hash(signUpDto.password);
       await this.usersRepository.save(user);
     } catch (error) {
-      const pgUniqueValidationErrorCode = '2305';
+      const pgUniqueValidationErrorCode = '23505';
       if (error.code === pgUniqueValidationErrorCode) {
         throw new ConflictException();
       }
